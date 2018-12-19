@@ -1,14 +1,14 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+    <ion-searchbar [(ngModel)]="searchTerm" [showCancelButton]="true" >
+    </ion-searchbar>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+  <div *ngIf="loaded && users.length==0" text-center>No Users Found</div>
+  <user *ngFor="let user of users | searchUser:searchTerm" [user]="user"></user>
+  <ion-spinner name="bubbles" *ngIf="!loaded"></ion-spinner>
+  <button ion-button block (click)="loadMoreUsers()" *ngIf="loaded && users.length!=0">Load More</button>
 </ion-content>
