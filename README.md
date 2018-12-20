@@ -12,6 +12,8 @@ Clone the project and in project directory run
 
 ``npm install``
 
+Replace the Google Map API KEY in index.html 
+
 
 ## Run the code
 
